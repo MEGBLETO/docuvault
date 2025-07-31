@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres-db-docuvault
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: docuvault
+      POSTGRES_USER: docuvault_user
+      POSTGRES_PASSWORD: docuvault_pass
+    ports:
+      - "5438:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
